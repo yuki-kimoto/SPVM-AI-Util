@@ -1,0 +1,5 @@
+package SPVM::AI::Util {
+  precompile sub foo : int () {
+    
+  }
+}

@@ -30,10 +30,11 @@ Perhaps a little code snippet.
 
 =head1 EXPORT
 
-A list of functions that can be exported.  You can delete this section
-if you don't export anything, such as for a purely object-oriented module.
+SPVM::AI::Util is AI Utility for array and matrix operations, activate function, and cost function, etc.
 
-=head1 SUBROUTINES/METHODS
+This is SPVM module. You can write programing using SPVM Language.
+
+=head1 STATIC METHODS
 
 =head2 function1
 
@@ -58,9 +59,6 @@ Yuki Kimoto, C<< <kimoto.yuki at gmail.com> >>
 Please report any bugs or feature requests to C<bug-spvm-ai-util at rt.cpan.org>, or through
 the web interface at L<https://rt.cpan.org/NoAuth/ReportBug.html?Queue=SPVM-AI-Util>.  I will be notified, and then you'll
 automatically be notified of progress on your bug as I make changes.
-
-
-
 
 =head1 SUPPORT
 
@@ -107,3 +105,80 @@ This is free software, licensed under:
 =cut
 
 1; # End of SPVM::AI::Util
+
+=head1 STATIC METHODS
+
+=head2 mat_newf
+
+  sub mat_newf : SPVM::AI::Util::FloatMatrix ($values : float[], $rows_length: int, $columns_length : int)
+
+Create new L<SPVM::AI::Util::FloatMatrix> object.
+
+B<Arguments:>
+
+1. Values. this value is set to C<values> field. Note that the reference is set to C<values> field not creating new array which elements is copied from argument array. Elements order is assumed as Column-Major order.
+
+2. Row. This value is set to C<rows_length> field.
+
+3. Column. This value is set to C<columns_length> field.
+
+B<Return Value:>
+
+L<SPVM::AI::Util::FloatMatrix> object.
+
+B<Exception:>
+
+1. If Values is not defined, a exception occurs.
+
+2. If Values length is different from Row * Column, a exception occurs.
+
+=head2 mat_new_zerof
+
+  sub mat_new_zerof : SPVM::AI::Util::FloatMatrix ($rows_length: int, $columns_length : int)
+
+Create new L<SPVM::AI::Util::FloatMatrix> object with zero value.
+
+=head2 mat_new_identf
+
+  sub mat_new_identf : SPVM::AI::Util::FloatMatrix ($dim : int)
+
+Create new ident <SPVM::AI::Util::FloatMatrix> by specifing the dimention.
+
+=head2 mat_transposef
+
+  sub mat_transposef : SPVM::AI::Util::FloatMatrix ($mat : SPVM::AI::Util::FloatMatrix)
+
+Transpose float matrix and return new L<SPVM::AI::Util::FloatMatrix> object.
+
+=head2 mat_addf
+
+  sub mat_addf : SPVM::AI::Util::FloatMatrix ($mat1 : SPVM::AI::Util::FloatMatrix, $mat2 : SPVM::AI::Util::FloatMatrix)
+
+Add two float Matrix and return new L<SPVM::AI::Util::FloatMatrix> object.
+
+=head2 mat_subf
+
+  sub mat_subf : SPVM::AI::Util::FloatMatrix ($mat1 : SPVM::AI::Util::FloatMatrix, $mat2 : SPVM::AI::Util::FloatMatrix)
+
+Subtract two float Matrix and return new L<SPVM::AI::Util::FloatMatrix> object.
+
+=head2 mat_scamulf
+
+  sub mat_scamulf : SPVM::AI::Util::FloatMatrix ($scalar : float, $mat1 : SPVM::AI::Util::FloatMatrix)
+
+Scalar multiply float matrix and return new L<SPVM::AI::Util::FloatMatrix> object.
+
+=head2 mat_mulf
+
+  sub mat_mulf : SPVM::AI::Util::FloatMatrix ($mat1 : SPVM::AI::Util::FloatMatrix, $mat2 : SPVM::AI::Util::FloatMatrix)
+
+Multiply two float Matrix and return new L<SPVM::AI::Util::FloatMatrix> object.
+
+=head2 mat_strf
+
+  sub mat_strf : string ($mat : SPVM::AI::Util::FloatMatrix)
+
+Convert Matrix Content to String. Each column is joined 1 space and Each row is end with \n
+
+1 3 5
+2 4 6

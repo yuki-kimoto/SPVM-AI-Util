@@ -1,15 +1,15 @@
 package SPVMAIUtilTest {
   use SPVM::AI::Util::FloatMatrix;
-  use SPVM::Matrix::Util (
-      mat_newf, mat_new,
-      mat_transposef, mat_transpose,
-      mat_strf, mat_str,
-      mat_addf, mat_add,
-      mat_subf, mat_sub,
-      mat_scamulf, mat_scamul,
-      mat_mulf, mat_mul,
-      mat_new_zerof, mat_new_zero,
-      mat_new_identf, mat_new_ident
+  use SPVM::AI::Util (
+      mat_newf,
+      mat_transposef,
+      mat_strf,
+      mat_addf,
+      mat_subf,
+      mat_scamulf,
+      mat_mulf,
+      mat_new_zerof,
+      mat_new_identf,
   );
   use SPVM::Util (equals_farray, equals_darray);
 
@@ -60,8 +60,8 @@ package SPVMAIUtilTest {
   }
 
   sub matrix_add_float : int () {
-    my $mat1 = SPVM::Matrix::Util->mat_newf([(float)1, 2, 3, 4, 5, 6], 2, 3);
-    my $mat2 = SPVM::Matrix::Util->mat_newf([(float)11, 12, 13, 14, 15, 16], 2, 3);
+    my $mat1 = SPVM::AI::Util->mat_newf([(float)1, 2, 3, 4, 5, 6], 2, 3);
+    my $mat2 = SPVM::AI::Util->mat_newf([(float)11, 12, 13, 14, 15, 16], 2, 3);
     my $mat3 = mat_addf($mat1, $mat2);
 
     unless ($mat3->{values} isa float[]) {
@@ -87,8 +87,8 @@ package SPVMAIUtilTest {
     return 1;
   }
   sub matrix_sub_float : int () {
-    my $mat1 = SPVM::Matrix::Util->mat_newf([(float)1, 2, 3, 4, 5, 6], 2, 3);
-    my $mat2 = SPVM::Matrix::Util->mat_newf([(float)16, 15, 14, 13, 12, 11], 2, 3);
+    my $mat1 = SPVM::AI::Util->mat_newf([(float)1, 2, 3, 4, 5, 6], 2, 3);
+    my $mat2 = SPVM::AI::Util->mat_newf([(float)16, 15, 14, 13, 12, 11], 2, 3);
     my $mat3 = mat_subf($mat1, $mat2);
     
     unless ($mat3->{values} isa float[]) {
@@ -115,7 +115,7 @@ package SPVMAIUtilTest {
   }
 
   sub matrix_scamul_float : int () {
-    my $mat1 = SPVM::Matrix::Util->mat_newf([(float)1, 2, 3, 4, 5, 6], 2, 3);
+    my $mat1 = SPVM::AI::Util->mat_newf([(float)1, 2, 3, 4, 5, 6], 2, 3);
     my $mat2 = mat_scamulf((float)3, $mat1);
 
     unless ($mat2->{values} isa float[]) {
@@ -175,8 +175,8 @@ package SPVMAIUtilTest {
   }
 
   sub matrix_mul_float : int () {
-    my $mat1 = SPVM::Matrix::Util->mat_newf([(float)1, 2, 3, 4, 5, 6], 2, 3);
-    my $mat2 = SPVM::Matrix::Util->mat_newf([(float)2, 3, 4, 5, 6, 7], 3, 2);
+    my $mat1 = SPVM::AI::Util->mat_newf([(float)1, 2, 3, 4, 5, 6], 2, 3);
+    my $mat2 = SPVM::AI::Util->mat_newf([(float)2, 3, 4, 5, 6, 7], 3, 2);
     my $mat3 = mat_mulf($mat1, $mat2);
 
     unless ($mat3->{values} isa float[]) {
